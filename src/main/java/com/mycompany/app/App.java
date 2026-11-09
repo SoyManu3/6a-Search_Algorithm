@@ -1,19 +1,24 @@
 package com.mycompany.app;
 
-/**
- * Hello world!
- */
 public class App {
 
-    private static final String MESSAGE = "Hello World!";
-
-    public App() {}
-
     public static void main(String[] args) {
-        System.out.println(MESSAGE);
+        if (args.length < 2 || args.length > 3) {
+            System.out.println("Uso: java ... <dof> <p> [archivo-salida]");
+            return;
+        }
+
+        int dof = Integer.parseInt(args[0]);
+        double p = Double.parseDouble(args[1]);
+        double x = findX(dof, p);
+        String result = String.format("%.5f%n", x);
+        System.out.print(result);
+        if (args.length == 3) {
+            new Output().writeData(args[2], result);
+        }
     }
 
-    public String getMessage() {
-        return MESSAGE;
+    public static double findX(int dof, double p) {
+        return new Logic(dof, p).findX();
     }
 }

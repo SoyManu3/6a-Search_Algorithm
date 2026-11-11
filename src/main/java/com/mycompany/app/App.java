@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import java.util.Locale;
+
 public class App {
 
     public static void main(String[] args) {
@@ -11,8 +13,9 @@ public class App {
         int dof = Integer.parseInt(args[0]);
         double p = Double.parseDouble(args[1]);
         double x = findX(dof, p);
-        String result = String.format("%.5f%n", x);
-        System.out.print(result);
+        System.out.printf(Locale.US, "Entrada: dof=%d, p=%.3f%n", dof, p);
+        System.out.printf(Locale.US, "Resultado: x=%.5f%n", x);
+        String result = String.format(Locale.US, "%.5f%n", x);
         if (args.length == 3) {
             new Output().writeData(args[2], result);
         }

@@ -23,4 +23,12 @@ set +x
 echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
-java -jar target/${NAME}-${VERSION}.jar
+DOF=6
+P=0.20
+
+echo "Prueba activa: dof=${DOF}, p=${P}"
+java -jar target/${NAME}-${VERSION}.jar "${DOF}" "${P}"
+
+# Para probar otros commits, cambiar DOF y P por una de estas opciones:
+# DOF=15; P=0.45  # x esperado: 1.75305
+# DOF=4; P=0.495  # x esperado: 4.60409
